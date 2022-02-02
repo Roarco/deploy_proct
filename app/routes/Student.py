@@ -1,14 +1,12 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from services.Students import studentsService
-from services.TypeId import typeIdService
 
 students = Blueprint("students", __name__)
 
 
 @students.route("/home_student")
 def home_Student():
-    typeids = typeIdService().get_typeIds()
-    return render_template("home_student.html", typeids=typeids)
+    return render_template("home_student.html")
 
 
 @students.route("/new_student", methods=["POST"])
