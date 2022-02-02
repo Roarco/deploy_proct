@@ -18,7 +18,12 @@
         <input type="text" name="lastname" id="lastname" placeholder="Last name">
 
         <label for="IDType">IDType</label>
-        <input type="text" name="IDType" id="IDType" placeholder="IDType">
+        <!-- <input type="text" name="IDType" id="IDType" placeholder="IDType"> -->
+        <select name="id_typeid" id="IDType">
+            {% for typeid in typeids %}
+                <option value="{{typeid.id}}">{{typeid.description}}</option>
+            {% endfor %}
+
         <label for="IDNumber">IDNumber</label>
         <input type="number" name="IDNumber" id="IDNumber" placeholder="IDNumber">
 

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models.auth import auth
-from models.Students import Student
+from models.models import Student
 from utils.db import db
 
 auths = Blueprint("auths", __name__)
@@ -11,6 +11,8 @@ def login():
         codigo_Student = request.form["codigo_Student"]
         IDNumber = request.form["IDNumber"]
         type_of_user = int(request.form["type_of_user"])
+        
+        print(codigo_Student, IDNumber, type_of_user)
 
         if type_of_user == 1:
             student = Student.query.filter_by(codigo_Student=codigo_Student).first()
