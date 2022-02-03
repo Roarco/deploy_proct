@@ -1,14 +1,16 @@
-
-<form action="/" class="login__form" method="POST">
-    <label for="code" class= "login__email">Codigo</label>
-    <input type="number" id="code" placeholder="ingresa tu codigo" class="input input-email", name="code">
-
-    <label for="IDNumber" class="login__password">Numero de identificacion</label>
-    <input type="number" id="IDNumber" placeholder="ingresa tu numero de indentificacion" class="input input-password", name="IDNumber">
-
-    <label for="tipo_usuario">Tipo Usuario</label class="login__email">
-    <select name="type_of_user" id="tipo_usuario" class="input input-password">
-        <option value="1">Estudiante</option>
-        <option value="2">Administrativo</option>
-    <input type="submit" value="Log in" class="login__button primary-button">
+<form action="/" class="login" method="POST">
+  <p class="title">Log in</p>
+  <input type="number" placeholder="Username" name="code" autofocus />
+  <i class="fa fa-user"></i>
+  <input type="password" placeholder="Password" name="IDNumber" />
+  <i class="fa fa-key"></i>
+  <select name="type_of_user" class="input input-password">
+    <option value="1">Estudiante</option>
+    <option value="2">Administrativo</option>
+  </select>
+  <i class="fa fa-key"></i>
+  <button>
+    <i class="spinner"></i>
+    <span class="state">Log in</span>
+  </button>
 </form>

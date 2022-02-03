@@ -14,12 +14,9 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="login">
-        <div class="login__form-container">
-            <img class="login__img" src="../assets/logos/logo_yard_sale.svg" alt="logo">
-            {% include './partial/login.html' %}
-            {% include './partial/_message.html' %}
-        </div>
+    <div class="wrapper">
+        {% include './partial/login.html' %}
+        {% include './partial/_message.html' %}
     </div>
 </body>
 <script
@@ -27,4 +24,5 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+<script src="../static/javascript/login.js"></script>
 </html>
