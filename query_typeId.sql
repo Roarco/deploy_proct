@@ -20,3 +20,7 @@ VALUES(
     '1',
     '110265986'
 )
+
+--query para insertar los estadosde documentos
+INSERT INTO `State`(`description`)
+VALUES('En revision'),('Rechazado'),('Aceptado')
