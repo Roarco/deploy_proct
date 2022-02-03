@@ -1,32 +1,16 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/home_student.css">
     <title>Home</title>
 </head>
 <body>
-    <form action="/new_student" method="post">
-        <label for="codigo_Student">codigo_Student</label>
-        <input type="number" name="codigo_Student" id="codigo_Student" placeholder="Codigo">
-
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" placeholder="Name">
-
-        <label for="lastname">Last name</label>
-        <input type="text" name="lastname" id="lastname" placeholder="Last name">
-
-        <label for="IDType">IDType</label>
-        <select name="id_typeid" id="IDType">
-            {% for typeid in typeids %}
-                <option value="{{typeid.id}}">{{typeid.description}}</option>
-            {% endfor %}
-
-        <label for="IDNumber">IDNumber</label>
-        <input type="number" name="IDNumber" id="IDNumber" placeholder="IDNumber">
-
-        <button>Saved</button>
+    {% include './partial/navbar.html' %}
+    <form action="" method="post">
+        {% include './partial/main_home_student.html' %}
     </form>
 </body>
-</html> -->
+</html>

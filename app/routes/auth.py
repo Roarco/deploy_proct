@@ -27,7 +27,7 @@ def login():
                 flash("Credenciales incorrectas")
                 return redirect(url_for("auths.login"))
             else:
-                return redirect(url_for("students.home_Student"))
+                return render_template("home_student.html",student=student)
         elif type_of_user == 2:
             administrative = Administrative.query.filter_by(
                 administrative_code=code
