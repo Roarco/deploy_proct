@@ -72,10 +72,15 @@ body {
   width: 100%;
   border: 1px solid #ddd;
   transition: border-width 0.2s ease;
-  border-radius: 2px;
+  border-radius: 2px ;
   color: rgb(136, 136, 136);
   background:white;
 }
+.login select:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
 
 .login select option {
   font-family: "Open Sans", sans-serif;
