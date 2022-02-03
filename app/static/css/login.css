@@ -65,6 +65,22 @@ body {
   border-radius: 2px;
   color: #ccc;
 }
+.login select {
+  display: block;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  transition: border-width 0.2s ease;
+  border-radius: 2px;
+  color: rgb(136, 136, 136);
+  background:white;
+}
+
+.login select option {
+  font-family: "Open Sans", sans-serif;
+  color: rgb(136, 136, 136);
+}
 .login input + i.fa {
   color: #fff;
   font-size: 1em;
