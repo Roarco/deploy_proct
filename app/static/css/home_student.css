@@ -72,6 +72,25 @@ body {
     align-items: center;
     justify-content: center;
 }
+.contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-instructions{
+    margin-bottom:23px;
+}
+.modulo1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    border-bottom: 1px solid #444;
+}
+
 .container-instructions h2 {
     text-align: center;
 }
@@ -85,6 +104,20 @@ body {
 .instructions div textarea {
     height: 43px;
     width: 399px;
+}
+.estado-documento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+.estado-documento h2 {
+    text-align: center;
+    margin-bottom: 0px;
+}
+.estado-documento table tr{
+    margin-right: 10px;
 }
 
 @media (max-width: 640px){

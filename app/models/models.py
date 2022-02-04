@@ -68,7 +68,7 @@ class Documents(db.Model):
     # Define the columns of the table
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     codigo_Student = db.Column(db.String(15), db.ForeignKey("Students.codigo_Student"), nullable=False)
-    student = db.relationship("Students", backref=db.backref("student_document", lazy=True))
+    student = db.relationship("Student", backref=db.backref("student_document", lazy=True))
     datetime_document = db.Column(db.DateTime, nullable=False)
     id_state = db.Column(db.Integer, db.ForeignKey("State.id"), nullable=False)
     State = db.relationship("State", backref=db.backref("state_document", lazy=True))
