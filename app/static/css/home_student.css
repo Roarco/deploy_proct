@@ -79,9 +79,9 @@ body {
     justify-content: center;
 }
 
-.container-instructions{
+/* .container-instructions{
     margin-bottom:23px;
-}
+} */
 .modulo1{
     display: flex;
     flex-direction: column;
@@ -96,14 +96,22 @@ body {
 }
 .instructions div {
     display: flex;
-    justify-content:space-between
+    justify-content:space-between;
 }
-.instructions div p {
-    margin: 0px;
+.instructions div {
+    display: flex;
+    justify-content:space-between;
+}
+.modulo1 .instructions{
+    padding-bottom: 23px;
+}
+.observation{
+    margin-top: 0;
 }
 .instructions div textarea {
     height: 43px;
     width: 399px;
+    resize: none;
 }
 .estado-documento {
     display: flex;
@@ -115,9 +123,6 @@ body {
 .estado-documento h2 {
     text-align: center;
     margin-bottom: 0px;
-}
-.estado-documento table tr{
-    margin-right: 10px;
 }
 
 @media (max-width: 640px){
