@@ -17,7 +17,6 @@ def login():
 
         if type_of_user == 1:
             student = Student.query.filter_by(codigo_Student=code).first()
-            document = documentService.get_document_cod_student(student.codigo_Student)
 
             if student is None:
                 flash(
@@ -30,7 +29,7 @@ def login():
                 flash("Credenciales incorrectas")
                 return redirect(url_for("auths.login"))
             else:
-                redirect(url_for("documents.upload", codigo_Student=student.codigo_Student))
+                document = documentService.get_document_cod_student(student.codigo_Student)
                 return render_template("home_student.html",student=student,document=document)
         elif type_of_user == 2:
             administrative = Administrative.query.filter_by(
@@ -47,6 +46,7 @@ def login():
                 return redirect(url_for("auths.login"))
             else:
                 return redirect(url_for("Administrativo.home_administrativo"))
+
 
     if request.method == "GET":
         return render_template("layout_login.html")

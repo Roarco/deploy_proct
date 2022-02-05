@@ -17,11 +17,12 @@ def upload():
         administrative_code = None
         administrative_observation = None
         file = request.files["file"]
+        print(file)
         file.save(os.path.join(app.files, f"{codigo_Student} .pdf"))
         new_document = documentService.create_document(
             codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation
         )
-        return new_document
+        return redirect(url_for("Student.home_student"))
 
 
-    return redirect(url_for("students.home_student"))
+    return redirect(url_for("Student.home_student"))
