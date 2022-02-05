@@ -12,7 +12,7 @@ class documentService:
     def get_document_cod_student(codigo_Student):
         return Documents.query.filter_by(codigo_Student=codigo_Student).all()
 
-    def create_document( self,codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation):
+    def create_document(codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation):
         new_document = Documents(codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation)
         db.session.add(new_document)
         db.session.commit()

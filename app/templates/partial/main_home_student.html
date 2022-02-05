@@ -1,7 +1,7 @@
 <main class="main">
   <div class="contenedor-principal">
     <div class="modulo1">
-      <form class="container-instructions">
+      <form action="/upload" class="container-instructions" method="POST" enctype="multipart/form-data">
         <h2>Subir Documentos</h2>
         <div class="instructions">
           <p>Se debe adjuntar un solo archivo PDF con los siguientes documentos:</p>
@@ -10,6 +10,7 @@
           <p>3. FORMATO para la Matricula Asignaturas diligenciado</p>
           <p>
             Subir documento
+            <input type="hidden" name="codigo_Student" value={{student.codigo_Student}}>
             <input type="file" name="file" id="file" class="inputfile" />
           </p>
           <div>

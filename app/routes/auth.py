@@ -3,6 +3,7 @@ from models.auth import auth
 from models.models import Student, Administrative
 from utils.db import db
 from services.Documents import documentService
+from services.States import stateService
 
 auths = Blueprint("auths", __name__)
 
@@ -17,7 +18,6 @@ def login():
         if type_of_user == 1:
             student = Student.query.filter_by(codigo_Student=code).first()
             document = documentService.get_document_cod_student(student.codigo_Student)
-            print(document)
 
             if student is None:
                 flash(
@@ -30,6 +30,7 @@ def login():
                 flash("Credenciales incorrectas")
                 return redirect(url_for("auths.login"))
             else:
+                redirect(url_for("documents.upload", codigo_Student=student.codigo_Student))
                 return render_template("home_student.html",student=student,document=document)
         elif type_of_user == 2:
             administrative = Administrative.query.filter_by(
