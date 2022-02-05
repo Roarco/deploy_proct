@@ -7,7 +7,8 @@ import app
 
 Documents = Blueprint("documents", __name__)
 
-@Documents.route("/upload" , methods=["GET", "POST"])
+
+@Documents.route("/upload", methods=["GET", "POST"])
 def upload():
     if request.method == "POST":
         codigo_Student = request.form["codigo_Student"]
@@ -20,9 +21,18 @@ def upload():
         print(file)
         file.save(os.path.join(app.files, f"{codigo_Student} .pdf"))
         new_document = documentService.create_document(
-            codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation
+            codigo_Student,
+            datetime_document,
+            id_state,
+            student_observation,
+            administrative_code,
+            administrative_observation,
         )
-        return redirect(url_for("Student.home_student"))
 
+        documents = documentService.get_document_cod_student(codigo_Student)
+        for i in documents:
+            student = i.student
+        document= documents[0]
+        return render_template("home_student.html",student=student,document=document)
 
-    return redirect(url_for("Student.home_student"))
+    return redirect(url_for("Estudiante.home_student"))

@@ -1,6 +1,6 @@
 # importamos modulo de flask
 from flask import Flask
-from routes.Student import students
+from routes.Students import Estudiante
 from routes.Administrativo import Administrativo
 from routes.auth import auths
 from routes.Documents import Documents
@@ -20,7 +20,7 @@ SQLAlchemy(app)
 
 
 
-app.register_blueprint(students)
+app.register_blueprint(Estudiante)
 app.register_blueprint(Administrativo)
 app.register_blueprint(auths)
 app.register_blueprint(Documents)
