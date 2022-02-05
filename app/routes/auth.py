@@ -29,7 +29,11 @@ def login():
                 flash("Credenciales incorrectas")
                 return redirect(url_for("auths.login"))
             else:
-                document = documentService.get_document_cod_student(student.codigo_Student)
+                documents = documentService.get_document_cod_student(student.codigo_Student)
+                if documents == []:
+                    document = []
+                else:
+                    document = documents[0]
                 return render_template("home_student.html",student=student,document=document)
         elif type_of_user == 2:
             administrative = Administrative.query.filter_by(
