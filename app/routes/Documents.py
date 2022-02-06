@@ -28,7 +28,6 @@ def upload():
             administrative_code,
             administrative_observation,
         )
-
         documents = documentService.get_document_cod_student(codigo_Student)
         for i in documents:
             student = i.student

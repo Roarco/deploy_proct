@@ -44,7 +44,9 @@
         <tbody>
           <tr>
             <th>{{document.datetime_document}}</th>
+            {% if document.id_state %}
             <th>{{document.State.description}}</th>
+            {% endif %}
             <th>{{document.student_observation}}</th>
             {% if document.administrative_code != None %}
             <th>{{document.administrative_code}}</th>
