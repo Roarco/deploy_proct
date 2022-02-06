@@ -46,8 +46,12 @@
             <th>{{document.datetime_document}}</th>
             <th>{{document.State.description}}</th>
             <th>{{document.student_observation}}</th>
+            {% if document.administrative_code != None %}
             <th>{{document.administrative_code}}</th>
+            {% endif %}
+            {% if document.administrative_observation != None %}
             <th>{{document.administrative_observation}}</th>
+            {% endif %}
           </tr>
         </tbody>
       </table>
