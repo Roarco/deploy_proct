@@ -10,7 +10,7 @@ class documentService:
         return Documents.query.all()
 
     def get_document_cod_student(codigo_Student):
-        return Documents.query.filter_by(codigo_Student=codigo_Student).all()
+        return Documents.query.filter_by(codigo_Student=codigo_Student).order_by(Documents.id.desc()).all()
 
     def create_document(codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation):
         new_document = Documents(codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation)
