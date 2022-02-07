@@ -34,7 +34,7 @@ def upload():
                 student = i.student
             document = documents[0]
             return render_template("home_student.html",student=student,document=document)
-        elif len(documents) > 0 and documents.pop().id_state == 2:
+        elif len(documents) > 0 and documents[0].id_state == 2:
             file.save(os.path.join(app.files, f"{codigo_Student} .pdf"))
             new_document = documentService.create_document(
                 codigo_Student,
