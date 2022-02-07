@@ -6,23 +6,11 @@ const max_file_size = 2000000;
 const file = document.getElementById("file");
 const extensions = /(.pdf)$/i;
 
-file.addEventListener("change", function() {
-   // si no hay archivos, regresamos
-    if (this.files.length <= 0) return;
-
-    // Validamos el primer archivo únicamente
-    const file = this.files[0];
-
-    if (file.size > max_file_size) {
-        alert("El archivo excede el tamaño máximo de 2MB");
-        return;
-    }
-});
-
 var _validFileExtensions = [".pdf"];
 
 function ValidateSingleInput(oInput) {
     if (oInput.type == "file") {
+        // validamos que la extension sea pdf
         var sFileName = oInput.value;
          if (sFileName.length > 0) {
             var blnValid = false;
@@ -39,6 +27,12 @@ function ValidateSingleInput(oInput) {
                 oInput.value = "";
                 return false;
             }
+        }
+        // validamos que el archivo no sea mayor a 2MB
+        if (oInput.files[0].size > max_file_size) {
+            alert("El archivo excede el tamaño máximo de 2MB");
+            oInput.value = "";
+            return false;
         }
     }
     return true;
