@@ -1,3 +1,4 @@
+
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from services.Students import studentsService
 from services.TypeId import typeIdService
@@ -9,13 +10,13 @@ Estudiante = Blueprint("Estudiante", __name__)
 def home_Student():
     return render_template("home_student.html")
 
-@Estudiante.route("/crud_student")
-def crud_Student():
-      typeids = typeIdService().get_typeIds()
-      students = studentsService().get_students()
-      print(students)
-      return render_template("crud_student.html", typeids=typeids , students=students)
 
+@Estudiante.route("/students")
+def crud_Student():
+    typeids = typeIdService().get_typeIds()
+    students = studentsService().get_students()
+    print(students)
+    return render_template("crud_student.html", typeids=typeids, students=students)
 
 
 @Estudiante.route("/new_student", methods=["POST"])
@@ -39,6 +40,8 @@ def update_Student():
     return "Has actualizado un Student"
 
 
-@Estudiante.route("/delete_student")
-def delete_Student():
-    return "Has eliminado un Student"
+@Estudiante.route("/delete_student/<id>")
+def delete_Student(id):
+    student = studentsService.delete_student(id)
+
+    return redirect(url_for("Estudiante.crud_Student"))
