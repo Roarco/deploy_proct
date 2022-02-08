@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Estudiante</title>
+</head>
+<body>
+    <form action="/new_student" method="post">
+        <label for="codigo_Student">codigo_Student</label>
+        <input type="number" name="codigo_Student" id="codigo_Student" placeholder="Codigo">
+
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Name">
+
+        <label for="lastname">Last name</label>
+        <input type="text" name="lastname" id="lastname" placeholder="Last name">
+
+        <label for="IDType">IDType</label>
+        <select name="id_typeid" id="IDType">
+            {% for typeid in typeids %}
+                <option value="{{typeid.id}}">{{typeid.description}}</option>
+            {% endfor %}
+
+        <label for="IDNumber">IDNumber</label>
+        <input type="number" name="IDNumber" id="IDNumber" placeholder="IDNumber">
+
+        <button>Saved</button>
+    </form>
+    <div class="estado-documento">
+        <h2>ESTADO DE DOCUMENTO CARGADO</h2>
+        <table cellspacing="25">
+          <thead>
+            <tr>
+              <th>Codigo estudiantil</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Tipo de identificacion</th>
+              <th>Numero de identificacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for student in students %}
+              <tr>
+                <td>{{student.codigo_Student}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.lastname}}</td>
+                <td>{{student.id_typeid}}</td>
+                <td>{{student.IDNumber}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</body>
+</html>
