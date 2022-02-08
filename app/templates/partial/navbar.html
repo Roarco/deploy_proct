@@ -1,23 +1,30 @@
-<nav class="navbar">
-  <div class="navbar-left">
+<header class="header">
+   <nav class="nav">
     <div class="name">
       <p>Bienvenido {{student.name}} {{student.lastname}}</p>
     </div>
-  </div>
-
-  <img src="../../static/icons/icons8-laptop-24.png" alt="logo" class="logo" />
-
-  <div class="navbar-rigth">
-    <ul>
-      <li>
+    <div class="logo-imagen">
+      <img
+        src="../../static/icons/icons8-laptop-24.png"
+        alt="logo"
+        class="logo"/>
+    </div>
+    <button class="nav-toggle" aria-label="Abrir menú">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-menu">
+      <li class="nav-menu-item">
         <a
           href="../../static/recursos/Formato para Matricular Asignaturas.docx"
           download="Formato para Matricular Asignaturas.docx"
+          class="nav-menu-link nav-link"
           >Formato</a
         >
       </li>
-      <li><a href="https://www.google.es/">Manual</a></li>
-      <li><a href="/">Salir</a></li>
+      <li class="nav-menu-item">
+        <a href="" class="nav-menu-link nav-link">Manual</a></li>
+      <li class="nav-menu-item">
+        <a href="/" class="nav-menu-link nav-link">Salir</a></li>
     </ul>
-  </div>
-</nav>
+  </nav>
+</header>
