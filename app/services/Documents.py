@@ -27,3 +27,9 @@ class documentService:
         document.administrative_observation = administrative_observation
         db.session.commit()
         return "Document updated"
+
+    def delete_document(codigo_Student):
+        document = Documents.query.filter_by(codigo_Student=codigo_Student).first()
+        db.session.delete(document)
+        db.session.commit()
+        return "Document deleted"
