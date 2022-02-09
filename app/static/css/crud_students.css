@@ -10,7 +10,7 @@ body {
 
 .crud-table {
     max-width: 800px;
-    padding: 40px 0;
+    padding: 24px 0 0 0;
 }
 .container {
     /* padding-right: 15px; */
@@ -26,6 +26,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom:15px;
 }
 .form-inline {
     margin-bottom: 20px;
@@ -58,10 +59,13 @@ body {
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
+    color: white;
 }
+
 .btn-primary {
     background-color: #337ab7;
     border-color: #2e6da4;
+    margin-right: 6px;
 }
 a {
     text-decoration: none;
@@ -79,7 +83,7 @@ a {
     align-items: center;
 }
 p {
-   margin: 0 10px 0 0;
+    margin: 0 10px 0 0;
 }
 .form-control {
     display: block;
@@ -98,9 +102,6 @@ p {
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-.crude-form__wrapper{
-    display: none;
 }
 .table {
     width: 100%;
@@ -121,7 +122,27 @@ p {
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #f9f9f9;
 }
+h3 {
+    font-size:24px;
+    margin-top:20px;
+    margin-bottom:10px
+}
+.form-group {
+    margin-bottom: 15px;
+}
 
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.id_number{
+    margin-bottom: 20px;
+}
+.form-inline .form-control {
+    margin-top: 11px;
+}
 @media (min-width: 768px){
     .container {
         width: 750px;
