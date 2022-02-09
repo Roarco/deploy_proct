@@ -1,0 +1,13 @@
+.footer{
+    margin-top:auto;
+    height:50px;
+    width: 100%;
+    margin-left: 0;
+    text-align:center;    
+}
+.texto-footer{
+    text-transform:capitalize;
+    font-size:var(--sm);
+    color:var(--colorSecund);
+    padding-top: 10px;
+}

@@ -2,7 +2,7 @@
   <div class="contenedor-principal">
     <div class="modulo1">
       <form action="/upload" class="container-instructions" method="POST" enctype="multipart/form-data">
-        <h2>Subir Documentos</h2>
+        <h2>SUBIR DOCUMENTOS</h2>
         <div class="instructions">
           <p>Se debe adjuntar un solo archivo PDF con los siguientes documentos:</p>
           <p>1. CERTIFICADO de afiliacion a una EPS con fecha reciente.</p>
@@ -43,16 +43,16 @@
         </thead>
         <tbody>
           <tr>
-            <th>{{document.datetime_document}}</th>
+            <td>{{document.datetime_document}}</td>
             {% if document.id_state %}
-            <th>{{document.State.description}}</th>
+            <td>{{document.State.description}}</td>
             {% endif %}
-            <th>{{document.student_observation}}</th>
+            <td>{{document.student_observation}}</td>
             {% if document.administrative_code != None %}
-            <th>{{document.administrative_code}}</th>
+            <td>{{document.administrative_code}}</td>
             {% endif %}
             {% if document.administrative_observation != None %}
-            <th>{{document.administrative_observation}}</th>
+            <td>{{document.administrative_observation}}</td>
             {% endif %}
           </tr>
         </tbody>
