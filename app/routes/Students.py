@@ -15,7 +15,6 @@ def home_Student():
 def crud_Student():
     typeids = typeIdService().get_typeIds()
     students = studentsService().get_students()
-    print(students)
     return render_template("crud_student.html", typeids=typeids, students=students)
 
 
@@ -35,9 +34,25 @@ def new_Student():
     return render_template("crud_student.html", students=students, typeids=typeids)
 
 
-@Estudiante.route("/update_student")
-def update_Student():
-    return "Has actualizado un Student"
+@Estudiante.route("/update_student/<id>" , methods=["GET", "POST"])
+def update_Student(id):
+        idviejo = id
+        studennt = studentsService().get_student(idviejo)
+        if request.method == "GET":
+            typeids = typeIdService().get_typeIds()
+            return render_template("update_student.html", student=studennt, typeids=typeids)
+
+        if request.method == "POST":
+            name = request.form["name"]
+            lastname = request.form["lastname"]
+            id_typeid = int(request.form["id_typeid"])
+            IDNumber = request.form["IDNumber"]
+
+
+            updated_student = studentsService.update_student(
+                idviejo, name, lastname, id_typeid, IDNumber
+            )
+            return redirect(url_for("Estudiante.crud_Student"))
 
 
 @Estudiante.route("/delete_student/<id>")

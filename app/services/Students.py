@@ -12,7 +12,7 @@ class studentsService:
     def get_students(self):
         return Student.query.all()
 
-    def get_student(self, codigo_Student):
+    def get_student(self,codigo_Student):
         return Student.query.filter_by(codigo_Student=codigo_Student).first()
 
     def create_student(codigo_Student, name, lastname, id_typeid, IDNumber):
@@ -21,11 +21,11 @@ class studentsService:
         db.session.commit()
         return "Student created"
 
-    def update_student(self, codigo_Student, name, lastname, IDType, IDNumber):
-        student = Student.query.filter_by(codigo_Student=codigo_Student).first()
+    def update_student(idviej, name, lastname, id_typeid, IDNumber):
+        student = Student.query.filter_by(codigo_Student=idviej).first()
         student.name = name
         student.lastname = lastname
-        student.IDType = IDType
+        student.id_typeid = id_typeid
         student.IDNumber = IDNumber
         db.session.commit()
         return "Student updated"
