@@ -49,3 +49,15 @@ navToggle.addEventListener("click", () => {
         navToggle.setAttribute("arial-label", "Abrir menú");
     }
 });
+
+td_State = document.getElementById("tdState").innerHTML;
+
+if (td_State == "En revision"){
+    document.getElementById("tdState").style.color = "#2196f3";
+}
+if (td_State == "Rechazado"){
+    document.getElementById("tdState").style.color = "#820933";
+}
+if (td_State == "Aceptado"){
+    document.getElementById("tdState").style.color = "#315C2B";
+}

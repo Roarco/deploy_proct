@@ -45,7 +45,7 @@
           <tr>
             <td>{{document.datetime_document}}</td>
             {% if document.id_state %}
-            <td>{{document.State.description}}</td>
+            <td id="tdState">{{document.State.description}}</td>
             {% endif %}
             <td>{{document.student_observation}}</td>
             {% if document.administrative_code != None %}
