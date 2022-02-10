@@ -26,6 +26,12 @@ def new_Student():
     id_typeid = int(request.form["id_typeid"])
     IDNumber = request.form["IDNumber"]
 
+    #consultamos si ese estudiante ya existe
+    students = studentsService().get_student(codigo_Student)
+    if students:
+        flash("Este estudiante ya existe")
+        return redirect(url_for("Estudiante.crud_Student"))
+
     new_student = studentsService.create_student(
         codigo_Student, name, lastname, id_typeid, IDNumber
     )
