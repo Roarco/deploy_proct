@@ -164,7 +164,6 @@ img{
     margin: 10px 0 10px 0;
 }
 /* Estilos de tabla */
-
 .estado-documento table {
     background-color:var(--textLigth);
     border-collapse: collapse;
@@ -173,6 +172,7 @@ img{
 }
 .estado-documento th,td{
     padding:20px;
+    text-align: center;
 }
 .estado-documento table thead{
     background-color:var(--textDark);
