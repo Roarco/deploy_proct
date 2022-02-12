@@ -84,14 +84,6 @@ def verify(id):
     states = stateService().get_states()
     return render_template('home_administrative.html', documents=documents, document_by_student=document_by_student[0], typeids=typeids,administrative=administrative,states=states)
 
-#ruta para revisar documento
-@Documents.route("/revision/<id>,<id_adm>", methods=["GET", "POST"])
-def revision(id,id_adm):
-    adm = AdministrativeService().get_administrative(id_adm)
-    document_by_student = documentService.get_document_cod_student(id)
-    states = stateService().get_states()
-    return render_template('revision_document.html', document=document_by_student[0],states=states, adm=adm)
-
 #ruta para actualizar documento
 @Documents.route("/update/<id>", methods=["POST"])
 def update(id):
@@ -111,8 +103,4 @@ def update(id):
             administrative_code,
             aministrative_observation,
         )
-        typeids = typeIdService().get_typeIds()
-        alldocuments = documentService().get_documents()
-        administrative = AdministrativeService().get_administrative(administrative_code)
-        print(administrative)
-        return render_template('home_administrative.html', typeids=typeids, documents=alldocuments, administrative=administrative)
+        return redirect(url_for("Administrativo.home_administrativo"))

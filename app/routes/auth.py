@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from models.auth import auth
 from models.models import Student, Administrative
 from utils.db import db
@@ -8,12 +8,18 @@ from services.TypeId import typeIdService
 auths = Blueprint("auths", __name__)
 
 
-@auths.route("/", methods=["GET", "POST"])
+@auths.route("/")
+def index():
+    return render_template("layout_login.html")
+
+
+@auths.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         code = request.form["code"]
         IDNumber = request.form["IDNumber"]
         type_of_user = int(request.form["type_of_user"])
+        session["code"] = code
 
         if type_of_user == 1:
             student = Student.query.filter_by(codigo_Student=code).first()
@@ -23,18 +29,20 @@ def login():
                     "Usuario no encontrado por favor comuniquese con el administrador"
                 )
                 return redirect(url_for("auths.login"))
-            elif (
-                student.IDNumber != IDNumber or student.codigo_Student != code
-            ):
+            elif student.IDNumber != IDNumber or student.codigo_Student != code:
                 flash("Credenciales incorrectas")
                 return redirect(url_for("auths.login"))
             else:
-                documents = documentService.get_document_cod_student(student.codigo_Student)
+                documents = documentService.get_document_cod_student(
+                    student.codigo_Student
+                )
                 if documents == []:
                     document = []
                 else:
                     document = documents[0]
-                return render_template("home_student.html",student=student,document=document)
+                return render_template(
+                    "home_student.html", student=student, document=document
+                )
         elif type_of_user == 2:
             administrative = Administrative.query.filter_by(
                 administrative_code=code
@@ -49,10 +57,15 @@ def login():
                 flash("Credenciales incorrectas")
                 return redirect(url_for("auths.login"))
             else:
-                typeids = typeIdService().get_typeIds()
-                alldocuments = documentService().get_documents()
-                return render_template("home_administrative.html",administrative=administrative,typeids=typeids, documents=alldocuments)
-
-
+                return redirect(
+                    url_for(
+                        "Administrativo.home_administrativo"
+                    )
+                )
     if request.method == "GET":
-        return render_template("layout_login.html")
+        return redirect(url_for("auths.index"))
+
+@auths.route("/logout")
+def logout():
+    session.pop("code", None)
+    return redirect(url_for("auths.login"))
