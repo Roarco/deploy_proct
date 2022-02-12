@@ -11,6 +11,8 @@ class documentService:
 
     def get_document_cod_student(codigo_Student):
         return Documents.query.filter_by(codigo_Student=codigo_Student).order_by(Documents.id.desc()).all()
+    def get_document_id(id):
+        return Documents.query.filter_by(id=id).first()
 
     def create_document(codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation):
         new_document = Documents(codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation)
@@ -18,11 +20,10 @@ class documentService:
         db.session.commit()
         return "Document created"
 
-    def update_document(self, codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation):
-        document = Documents.query.filter_by(codigo_Student=codigo_Student).first()
+    def update_document(id,datetime_document,id_state,administrative_code, administrative_observation):
+        document = documentService.get_document_id(id)
         document.datetime_document = datetime_document
         document.id_state = id_state
-        document.student_observation = student_observation
         document.administrative_code = administrative_code
         document.administrative_observation = administrative_observation
         db.session.commit()

@@ -3,7 +3,7 @@ from models.auth import auth
 from models.models import Student, Administrative
 from utils.db import db
 from services.Documents import documentService
-from services.States import stateService
+from services.TypeId import typeIdService
 
 auths = Blueprint("auths", __name__)
 
@@ -49,7 +49,9 @@ def login():
                 flash("Credenciales incorrectas")
                 return redirect(url_for("auths.login"))
             else:
-                return redirect(url_for("Administrativo.home_administrativo"))
+                typeids = typeIdService().get_typeIds()
+                alldocuments = documentService().get_documents()
+                return render_template("home_administrative.html",administrative=administrative,typeids=typeids, documents=alldocuments)
 
 
     if request.method == "GET":
