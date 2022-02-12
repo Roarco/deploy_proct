@@ -1,3 +1,107 @@
 <main>
-    
-</main>
+    <div class="estado-documento">
+        <h2>ESTADO DE DOCUMENTO CARGADO</h2>
+        <table cellspacing="25">
+          <thead>
+            <tr>
+              <th>Fecha-Hora</th>
+              <th>Codigo Estudiantil</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Observacion Estudiante</th>
+              <th>PDF</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if administrative%}
+            {% for document in documents %}
+            <tr>
+                <td>{{document.datetime_document}}</td>
+                <td>{{document.codigo_Student}}</td>
+                <td>{{document.student.name}}</td>
+                <td>{{document.student.lastname}}</td>
+                <td>{{document.student_observation}}</td>
+                <td><a href="{{url_for('documents.preview',id=document.codigo_Student)}}"><img src="../../static/icons/view-black.png" alt="Visualizar" class="pdf-visualize"></a></td>
+                <td><a href="{{url_for('documents.verify',id=[document.codigo_Student,administrative.administrative_code])}}"><img src="../../static/icons/lapiz-black.png" alt="editar" class="img-edit"></a></td>
+              </tr>
+              {%endfor%}
+              {%endif%}
+          </tbody>
+        </table>
+      </div>
+      {% if document_by_student %}
+      <div class="edit-adm" id="revision">
+        <form action="/update/{{document_by_student.id}}" autocomplete="off" method="POST" id="form">
+          <div class="form-group">
+            <label for="codigo_Student">Codigo Estudiantil</label
+            ><input
+              name="codigo_Student"
+              class="form-control"
+              id="codigo_Student"
+              type="number"
+              value="{{document_by_student.codigo_Student}}"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Nombre</label
+            ><input
+              class="form-control"
+              id="name"
+              type="text"
+              name="name"
+              value="{{document_by_student.student.name}}"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="lastname">Apellido</label
+            ><input
+              class="form-control"
+              id="lastname"
+              type="text"
+              name="lastname"
+              value="{{document_by_student.student.lastname}}"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="student_observation">Observacion Estudiante</label>
+            <textarea
+              class="form-control"
+              id="student_observation"
+              name="student_observation"
+              value="{{document_by_student.student_observation}}"
+              disabled
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="aministrative_observation"> Observation Aministrativo</label>
+            <textarea
+              class="form-control"
+              id="aministrative_observation"
+              name="aministrative_observation"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="state">Estado</label>
+            <select name="id_state" id="state" class="form-control" required>
+              {% for state in states %}
+              <option value="{{state.id}}">{{state.description}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <input
+            type="hidden"
+            name="administrative_code"
+            value="{{administrative.administrative_code}}"
+          />
+          <button class="btn btn-primary" id="btn">Confirmar</button>
+          <button type="button" class="btn btn-primary" onclick="cerrar()">Cancelar</button>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </main>

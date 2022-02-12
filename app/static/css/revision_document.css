@@ -19,91 +19,8 @@
     --colorSecundary:#efefef;
 }
 
-*   {
-    margin: 0;
-    box-sizing: border-box;
-}
+
 body {
-    font-family: 'Quicksand', sans-serif;
-    padding:90px 0 0;
-    padding-bottom:0;   
-    background-image: linear-gradient(to right top, #333745, #3e4c6d, #426397, #3d7cc4, #2196f3);
-    display:flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.contenedor-principal{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.estado-documento {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-}
-.estado-documento h2 {
-    text-align: center;
-    margin: 10px 0 10px 0;
-}
-
-.estado-documento table {
-    background-color:var(--textLigth);
-    border-collapse: collapse;
-    /* border:solid 1px var(--black); */
-    box-shadow:0 1rem 1rem rgba(0, 0, 0, 0.2) ;
-}
-.estado-documento th,td{
-    padding:20px;
-    text-align:center;
-}
-.estado-documento table thead{
-    background-color:var(--textDark);
-    border-bottom: solid 5px var(--colorPrimary);
-    color:var(--textLigth);
-}
-.estado-documento tr:nth-child(even){
-    background-color: var(--textDark);
-    color: var(--textLigth);
-}
-
-.pdf-visualize {
-    width: 30px;
-    height: 30px;
-}
-.estado-documento tr:nth-child(even) .pdf-visualize {
-    content: url('../icons/view-white.png');
-}
-
-.img-edit{
-    width: 25px;
-    height: 25px;
-}
-.estado-documento tr:nth-child(even) .img-edit {
-    content: url('../icons/lapiz-white.png');
-}
-
-
-.edit-adm {
-    width: 740px;
-    height: 594px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 15px;
     display: flex;
     justify-content: center;
     font-family: 'Quicksand', sans-serif;
@@ -171,8 +88,4 @@ label {
     border: 1px solid transparent;
     border-radius: 4px;
     color: white;
-}
-
-@media (max-width: 768px) {
-
 }
