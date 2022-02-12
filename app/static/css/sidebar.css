@@ -119,12 +119,12 @@ header{
 .menu__side{
     width: 80px;
     height:100%;
-    background-color:var(--colorPrimary);
+    background-color:var(--textLigth);
     position: fixed;
     top: 0;
     left: 0;
     font-size:18px;
-    color: var(--white);
+    color: var(--textDark);
     z-index: 300;
     overflow: hidden;
     overflow-y: scroll;
@@ -154,14 +154,14 @@ header{
     top: 80px;
 }
 .options__menu a{
-    color:var(--textLigth);
+    color:var(--textDark);
     cursor: default;
     display:block;
     position: relative;
     transition: color 300ms;
 }
 .options__menu a:hover{
-    color: var(--textDark);
+    color: var(--colorPrimary);
 }
 .options__menu .option{
     padding:20px 0px;
@@ -179,13 +179,13 @@ header{
     cursor: pointer;
 }
 a.selected{
-    color: var(--white);
+    color: var(--black);
 }
 .selected:before{
     content: '';
     width: 3px;
     height: 80%;
-    background-color: var(--white);
+    background-color: var(--black);
     position: absolute;
     top: 10%;
     left: -30px;

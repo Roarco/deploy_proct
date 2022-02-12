@@ -6,70 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/crud_students.css">
     <link rel="stylesheet" href="../static/css/menssages.css">
+    <link rel="stylesheet" href="../static/css/sidebar.css">
     <title>Estudiantes</title>
 </head>
-<body>
-<div class="container crud-table" ng-app="myApp" ng-controller="namesCtrl">
-    <div class="clearfix">
-        <div class="form-inline pull-left"><button class="btn btn-success" id="add" onclick="add()"><span class="glyphicon glyphicon-plus"> </span>Añadir Estudiantes</button></div>
-        <div class="form-inline pull-right"><p>Buscar:</p><div class="form-group"><input class="form-control" type="text"  placeholder="Buscar"  id="inputSearch" onkeyup="search()"/></div>
+<body id="body">
+    {% include './partial/sidebar.html' %}
+    <div class="container crud-table" ng-app="myApp" ng-controller="namesCtrl">
+        <div class="clearfix">
+            <div class="form-inline pull-left"><button class="btn btn-success" id="add" onclick="add()"><span class="glyphicon glyphicon-plus"> </span>Añadir Estudiantes</button></div>
+            <div class="form-inline pull-right"><p>Buscar:</p><div class="form-group"><input class="form-control" type="text"  placeholder="Buscar"  id="inputSearch" onkeyup="search()"/></div>
+            </div>
+        </div>
+        <table class="table table-striped" id="tablaStudent">
+            <thead>
+                <tr>
+                    <th>Codigo Estudiantil</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo de identificacion</th>
+                    <th>Numero de identificacion</th>
+                    <th><i class="fa-solid fa-user-pen" title="Inicio"></i></th>
+                    <th><i class="fa-solid fa-trash-can" title="Inicio"></i></th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                {% for student in students%}
+                <tr>
+                    <td>{{student.codigo_Student}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.lastname}}</td>
+                    <td>{{student.TypeId.description}}</td>
+                    <td>{{student.IDNumber}}</td>
+                    <td><button class="btn btn-primary"><a href="{{url_for('Estudiante.update_Student',id=student.codigo_Student)}}">Editar</a></button></td>
+                    <td><button class="btn btn-danger"><a href="{{ url_for('Estudiante.delete_Student',id=student.codigo_Student) }}">Eliminar</a></button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="crude-form__wrapper" id="container" style="display:none">
+            <h3 id="ed" style="display:block">Editar Estudiante</h3>
+            <h3 id="ad" style="display:block">Agregar Estudiante</h3>
+            <form action="/new_student" autocomplete="off" method="POST" id="form" style="display:block">
+                <div class="form-group"><label for="codigo_Student">Codigo Estudiantil</label><input class="form-control" id="codigo_Student" type="number" name="codigo_Student" ng-model="crudFormName" placeholder="Ingrese el codigo estudiantil" required="required" />
+                </div>
+                <div class="form-group"><label for="name">Nombre</label><input class="form-control" id="name" type="text" name="name" ng-model="crudFormCountry" placeholder="Ingrese el Nombre" required="required" />
+                </div>
+                <div class="form-group"><label for="lastname">Apellido</label><input class="form-control" id="lastname" type="text" name="lastname" ng-model="crudFormSalary" placeholder="Ingrese el Apellido" min="1" required="required" />
+                </div>
+                <div class="form-group">
+                    <label for="id_typeid">Tipo de identificacion</label>
+                    <select name="id_typeid" id="id_typeid" class="form-control">
+                        {% for type in typeids %}
+                        <option id="select" value="{{type.id}}">{{type.description}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group"><label for="IDNumber">Numero de identificacion</label><input class="form-control id_number" id="IDNumber" type="number" name="IDNumber" ng-model="crudFormEmail" placeholder="Ingrese el numero de identificacion" required="required" />
+                    <button class="btn btn-primary" id="btn">
+                    </button>
+                    <button class="btn btn-primary" onclick="delet()"> Cancel</button>
+            </form>
         </div>
     </div>
-    <table class="table table-striped" id="tablaStudent">
-        <thead>
-            <tr>
-                <th>Codigo Estudiantil</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Tipo de identificacion</th>
-                <th>Numero de identificacion</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            {% for student in students%}
-            <tr>
-                <td>{{student.codigo_Student}}</td>
-                <td>{{student.name}}</td>
-                <td>{{student.lastname}}</td>
-                <td>{{student.TypeId.description}}</td>
-                <td>{{student.IDNumber}}</td>
-                <td><button class="btn btn-primary"><a href="{{url_for('Estudiante.update_Student',id=student.codigo_Student)}}">Editar</a></button></td>
-                <td><button class="btn btn-danger"><a href="{{ url_for('Estudiante.delete_Student',id=student.codigo_Student) }}">Eliminar</a></button></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <div class="crude-form__wrapper" id="container" style="display:none">
-        <h3 id="ed" style="display:block">Editar Estudiante</h3>
-        <h3 id="ad" style="display:block">Agregar Estudiante</h3>
-        <form action="/new_student" autocomplete="off" method="POST" id="form" style="display:block">
-            <div class="form-group"><label for="codigo_Student">Codigo Estudiantil</label><input class="form-control" id="codigo_Student" type="number" name="codigo_Student" ng-model="crudFormName" placeholder="Ingrese el codigo estudiantil" required="required" />
-            </div>
-            <div class="form-group"><label for="name">Nombre</label><input class="form-control" id="name" type="text" name="name" ng-model="crudFormCountry" placeholder="Ingrese el Nombre" required="required" />
-            </div>
-            <div class="form-group"><label for="lastname">Apellido</label><input class="form-control" id="lastname" type="text" name="lastname" ng-model="crudFormSalary" placeholder="Ingrese el Apellido" min="1" required="required" />
-            </div>
-            <div class="form-group">
-                <label for="id_typeid">Tipo de identificacion</label>
-                <select name="id_typeid" id="id_typeid" class="form-control">
-                    {% for type in typeids %}
-                    <option id="select" value="{{type.id}}">{{type.description}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group"><label for="IDNumber">Numero de identificacion</label><input class="form-control id_number" id="IDNumber" type="number" name="IDNumber" ng-model="crudFormEmail" placeholder="Ingrese el numero de identificacion" required="required" />
-                <button class="btn btn-primary" id="btn">
-                </button>
-                <button class="btn btn-primary" onclick="delet()"> Cancel</button>
-        </form>
-    </div>
-</div>
-{%include './partial/_message.html'%}
+    {%include './partial/_message.html'%}
 <script src="../static/javascript/crud_stuent.js"></script>
 <script
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 crossorigin="anonymous"
 ></script>
+<script src="https://kit.fontawesome.com/79f542cb27.js" crossorigin="anonymous"></script>
+<script src="../static/javascript/sidebar.js"></script>
 </body>
 </html>
