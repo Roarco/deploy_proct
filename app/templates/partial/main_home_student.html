@@ -1,20 +1,19 @@
+
 <main class="main">
   <div class="contenedor-principal">
-    <div class="modulo1">
       <form action="/upload" class="container-instructions" method="POST" enctype="multipart/form-data">
         <h2>SUBIR DOCUMENTOS</h2>
         <div class="instructions">
-          <p>Se debe adjuntar un solo archivo PDF con los siguientes documentos:</p>
-          <p>1. CERTIFICADO de afiliacion a una EPS con fecha reciente.</p>
-          <p>2. COMPROBANTE DE PAGO correspondiente a la Matricula finaciera</p>
-          <p>3. FORMATO para la Matricula Asignaturas diligenciado</p>
+          <p>Se debe adjuntar un solo archivo .PDF con los siguientes documentos:</p>
+          <p>1. Certificado de afiliación a una EPS con fecha reciente.</p>
+          <p>2. Comprobante de correspondiente a la Matricula finaciera</p>
+          <p>3. Formato para la Matricula Asignaturas diligenciado</p>
           <p>
-            Subir documento
             <input type="hidden" name="codigo_Student" value={{student.codigo_Student}}>
             <input type="file" required name="file" id="file"  class="inputfile" accept=".pdf" onchange="ValidateSingleInput(this)"/>
           </p>
           <div>
-            <p class="observation">Observacion</p>
+            <p class="observation" maxlength="100">Observacion:</p>
             <textarea
               name="observacion"
               id="observacion"
@@ -27,11 +26,10 @@
           </button>
         </div>
       </form>
-    </div>
-
-    <div class="estado-documento">
-      <h2>ESTADO DE DOCUMENTO CARGADO</h2>
+  </div>
+  <div class="estado-documento">
       <table cellspacing="25">
+        <caption>ESTADO DE TU DOCUMENTO</caption>
         <thead>
           <tr>
             <th>Fecha-Hora</th>
@@ -57,7 +55,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
   </div>
 </main>
 

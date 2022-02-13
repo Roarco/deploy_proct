@@ -18,15 +18,12 @@
     --colorPrimary:#2196f3;
     --colorSecundary:#efefef;
 }
-
 *   {
     margin: 0;
     box-sizing: border-box;
 }
 body {
     font-family: 'Quicksand', sans-serif;
-    padding:90px 0 0;
-    padding-bottom:0;   
     background-image: linear-gradient(to right top, #333745, #3e4c6d, #426397, #3d7cc4, #2196f3);
     display:flex;
     flex-direction: column;
@@ -47,7 +44,6 @@ body {
     align-items:center;
     padding:0 40px 0 40px;
     box-shadow: 0px 1px rgba(0,0,0, .3);
-    /* max-width: 992px; */
     margin:0 auto;
 }
 .nav-link{
@@ -56,12 +52,11 @@ body {
 }
 .nav-menu {
     display: flex;
-    /* margin-right: 40px; */
     list-style: none;
     padding: 0;
 }
 .nav-menu-item{
-    font-size: 14px;
+    font-size: var(--sm);
     line-height:80px;
     text-transform: uppercase;
     width:max-content;
@@ -78,7 +73,7 @@ body {
     color:#fff;
     background: none;
     border: none;
-    font-size: 30px;
+    font-size: var(--lg);
     padding:0 20px;
     line-height:60px;
     display:none;
@@ -87,7 +82,7 @@ body {
 .name{
     display:flex;
     align-items:center;
-    font-size:var(--lg);
+    font-size:var(--md);
     color:var(--white);
     font-weight: bold;
 } 
@@ -99,14 +94,12 @@ img{
     width: 133px;
     height: 75px;
 }
-
-
-
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 90px;
 }
 .contenedor-principal {
     display: flex;
@@ -119,26 +112,21 @@ img{
     margin-bottom:20px;
     box-shadow:0 1rem 1rem rgba(0, 0, 0, 0.2) ;
 } 
-.modulo1{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    /* border-bottom: 1px solid #444; */
-}
 .container-instructions h2 {
     text-align: center;
     padding: 10px 0 10px 0;
     color: var(--textLigth);
     border-bottom: solid 5px var(--colorPrimary);
+    font-size:var(--lg);
 }
 .instructions{
     background-color: var(--colorSecundary);
     padding: 20px;
+    font-size:var(--md);
 }
 .instructions p{
-    margin: 10px 0 10px 0;
+    margin: 10px 0 20px 0;
+
 }
 .instructions div {
     display: flex;
@@ -148,7 +136,7 @@ img{
     margin-top: 0;
 }
 .instructions div textarea {
-    height: 43px;
+    height: 50px;
     width: 399px;
     resize: none;
 }
@@ -159,25 +147,27 @@ img{
     justify-content: center;
     width: 100vw;
 }
-.estado-documento h2 {
-    text-align: center;
-    margin: 10px 0 10px 0;
-}
+
 /* Estilos de tabla */
 .estado-documento table {
     background-color:var(--textLigth);
     border-collapse: collapse;
-    /* border:solid 1px var(--black); */
     box-shadow:0 1rem 1rem rgba(0, 0, 0, 0.2) ;
 }
 .estado-documento th,td{
     padding:20px;
     text-align: center;
+    font-size:var(--md);
 }
-.estado-documento table thead{
+.estado-documento table thead, caption{
     background-color:var(--textDark);
     border-bottom: solid 5px var(--colorPrimary);
     color:var(--textLigth);
+}
+caption{
+    padding: 10px 0;
+    font-size:var(--lg);
+    font-weight: bold;
 }
 .estado-documento tr:nth-child(even){
     background-color: var(--textDark);
@@ -185,7 +175,7 @@ img{
 /* Ripple effect button save */
 .ripple {
     background-position: center;
-    transition: background 0.8s;
+    transition: background 0.5s;
 }
 .ripple:hover {
     background: var(--colorPrimary) radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
@@ -199,16 +189,38 @@ img{
 button{
     border: none;
     border-radius: 2px;
-    padding: 12px 18px;
-    font-size: 16px;
+    padding: 10px 10px;
+    font-size: var(--sm);
     cursor: pointer;
     color: white;
     background-color: var(--textDark);
     box-shadow: 0 0 4px #999;
     outline: none;
+    font-family: 'Quicksand', sans-serif;
 }
 /* boton file */
-
+.instructions .inputfile{
+    font-size: var(--sm);
+    background:white;
+    padding-right: 10px;
+    box-shadow: 0 0 4px #999;
+    outline: none;
+    transition: background 0.5s;
+    font-family: 'Quicksand', sans-serif;
+}
+::-webkit-file-upload-button{
+    color:white;
+    background:var(--textDark);
+    padding: 10px;
+    border:none;
+    box-shadow: 0 0 4px #999;
+    transition: background 0.5s;
+    font-family: 'Quicksand', sans-serif;
+}
+::-webkit-file-upload-button:hover{
+    background: var(--colorPrimary);
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
     body {

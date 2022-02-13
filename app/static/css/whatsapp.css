@@ -1,0 +1,18 @@
+.whatsapp{
+
+    position:fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 999;
+    padding: 25px;
+    margin:0 0 0 0;
+}
+.whatsapp img {
+    height:auto;
+    width: 50px;
+    opacity: 75%;
+}
+.whatsapp img:hover{
+    opacity: 100%;
+    cursor: pointer;
+}
