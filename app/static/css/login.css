@@ -4,6 +4,7 @@ body {
   height: 100vh;
   background: url("../images/background.jpg") 50% fixed;
   background-size: cover;
+  margin: 0;
 }
 @keyframes spinner {
   0% {

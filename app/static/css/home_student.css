@@ -99,13 +99,14 @@ img{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 90px;
+    margin: 90px 0 110px 0;
 }
 .contenedor-principal {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 800px;
 }
 .container-instructions{
     background-color: var(--textDark);
@@ -145,7 +146,7 @@ img{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    max-width: 800px;
 }
 
 /* Estilos de tabla */

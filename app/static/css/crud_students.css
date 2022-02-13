@@ -8,7 +8,7 @@ body {
     color: #333;
     background-image: linear-gradient(to right top, #333745, #3e4c6d, #426397, #3d7cc4, #2196f3);
     margin: 0;
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
 }
 .crud-table {
     max-width: 800px;
