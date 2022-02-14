@@ -15,6 +15,7 @@
               <th>Apellido</th>
               <th>Estado</th>
               <th>Observacion Estudiante</th>
+              <th>Observacion Administrativo</th>
               <th><i class="fa-solid fa-file-pdf"></i></th>
               <th><i class="fa-solid fa-pen-to-square"></i></th>
             </tr>
@@ -31,6 +32,7 @@
                 <td id="tdState">{{document.State.description}}</td>
                 {% endif %}
                 <td>{{document.student_observation}}</td>
+                <td>{{document.administrative_observation}}</td>
                 <td><a href="{{url_for('documents.preview',id=document.codigo_Student)}}"><img src="../../static/icons/view-black.png" alt="Visualizar" class="pdf-visualize"></a></td>
                 <td><a href="{{url_for('documents.verify',id=[document.codigo_Student,administrative.administrative_code])}}"><img src="../../static/icons/lapiz-black.png" alt="editar" class="img-edit"></a></td>
               </tr>
@@ -92,7 +94,7 @@
                 class="form-control"
                 id="aministrative_observation"
                 name="aministrative_observation"
-                required
+                required maxlength="100"
               ></textarea>
             </div>
             <div class="form-group">
