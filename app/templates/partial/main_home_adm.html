@@ -1,16 +1,22 @@
+<div class="form-inline">
+  <div class="form-group">
+    <input class="form-control" type="text"  placeholder="Buscar:"  id="inputSearch" onkeyup="search()"/>
+  </div>
+</div>
 <main>
     <div class="estado-documento">
-        <h2>ESTADO DE DOCUMENTO CARGADO</h2>
-        <table cellspacing="25">
+        <table cellspacing="25" id="tablaDocument">
+          <caption>ESTADO DE DOCUMENTO CARGADO</caption>
           <thead>
             <tr>
               <th>Fecha-Hora</th>
               <th>Codigo Estudiantil</th>
               <th>Nombre</th>
               <th>Apellido</th>
+              <th>Estado</th>
               <th>Observacion Estudiante</th>
-              <th>PDF</th>
-              <th></th>
+              <th><i class="fa-solid fa-file-pdf"></i></th>
+              <th><i class="fa-solid fa-pen-to-square"></i></th>
             </tr>
           </thead>
           <tbody>
@@ -21,6 +27,9 @@
                 <td>{{document.codigo_Student}}</td>
                 <td>{{document.student.name}}</td>
                 <td>{{document.student.lastname}}</td>
+                {% if document.id_state %}
+                <td id="tdState">{{document.State.description}}</td>
+                {% endif %}
                 <td>{{document.student_observation}}</td>
                 <td><a href="{{url_for('documents.preview',id=document.codigo_Student)}}"><img src="../../static/icons/view-black.png" alt="Visualizar" class="pdf-visualize"></a></td>
                 <td><a href="{{url_for('documents.verify',id=[document.codigo_Student,administrative.administrative_code])}}"><img src="../../static/icons/lapiz-black.png" alt="editar" class="img-edit"></a></td>
@@ -99,7 +108,7 @@
             value="{{administrative.administrative_code}}"
           />
           <button class="btn btn-primary" id="btn">Confirmar</button>
-          <button type="button" class="btn btn-primary" onclick="cerrar()">Cancelar</button>
+          <button type="button" class="btn btn-danger" onclick="cerrar()">Cancelar</button>
         </form>
       </div>
       {% endif %}
