@@ -19,7 +19,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 SQLAlchemy(app)
 
 
-
 app.register_blueprint(Estudiante)
 app.register_blueprint(Administrativo)
 app.register_blueprint(auths)

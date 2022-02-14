@@ -13,7 +13,7 @@ def home_Student():
     if "code" in session:
         if session["type_of_user"] == 1:
             code = session["code"]
-            student = Student.query.filter_by(codigo_Student=code).first()
+            student = studentsService().get_student(code)
             documents = documentService.get_document_cod_student(code)
             if documents == []:
                 document = []

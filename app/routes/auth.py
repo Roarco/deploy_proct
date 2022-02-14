@@ -1,9 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from models.auth import auth
-from models.models import Student, Administrative
-from utils.db import db
-from services.Documents import documentService
-from services.TypeId import typeIdService
+from services.Students import studentsService
+from services.Administrativo import AdministrativeService
+
 
 auths = Blueprint("auths", __name__)
 
@@ -23,7 +21,7 @@ def login():
         session["type_of_user"] = type_of_user
 
         if type_of_user == 1:
-            student = Student.query.filter_by(codigo_Student=code).first()
+            student = studentsService().get_student(code)
 
             if student is None:
                 flash(
@@ -36,9 +34,7 @@ def login():
             else:
                 return redirect(url_for("Estudiante.home_Student"))
         elif type_of_user == 2:
-            administrative = Administrative.query.filter_by(
-                administrative_code=code
-            ).first()
+            administrative = AdministrativeService().get_administrative(code)
 
             if administrative is None:
                 flash(

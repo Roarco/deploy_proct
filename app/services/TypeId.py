@@ -7,10 +7,14 @@ class typeIdService:
         pass
 
     def get_typeIds(self):
-        return typeId.query.all()
+        types = typeId.query.all()
+        db.session.commit()
+        return types
 
     def get_typeId(id):
-        return typeId.query.filter_by(id=id).first()
+        type = typeId.query.filter_by(id=id).first()
+        db.session.commit()
+        return type
 
     def create_typeId(self, description):
         typeid = typeId(description=description)

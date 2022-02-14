@@ -8,10 +8,14 @@ class stateService():
             pass
     
         def get_states(self):
-            return State.query.all()
+            states = State.query.all()
+            db.session.commit()
+            return states
     
         def get_state_id(self, id_state):
-            return State.query.filter_by(id_state=id_state).first()
+            state = State.query.filter_by(id_state=id_state).first()
+            db.session.commit()
+            return state
     
         def create_state(self, state):
             new_state = State(state)

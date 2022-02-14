@@ -7,12 +7,18 @@ class documentService:
         pass
 
     def get_documents(self):
-        return Documents.query.all()
+        documents = Documents.query.all()
+        db.session.commit()
+        return documents
 
     def get_document_cod_student(codigo_Student):
-        return Documents.query.filter_by(codigo_Student=codigo_Student).order_by(Documents.id.desc()).all()
+        document = Documents.query.filter_by(codigo_Student=codigo_Student).order_by(Documents.id.desc()).all()
+        db.session.commit()
+        return document
     def get_document_id(id):
-        return Documents.query.filter_by(id=id).first()
+        document = Documents.query.filter_by(id=id).first()
+        db.session.commit()
+        return document
 
     def create_document(codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation):
         new_document = Documents(codigo_Student, datetime_document, id_state, student_observation, administrative_code, administrative_observation)
