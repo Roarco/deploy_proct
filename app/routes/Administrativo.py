@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from models.models import Administrative
+from flask import Blueprint, render_template, redirect, url_for, session
 from services.TypeId import typeIdService
 from services.Documents import documentService
+from services.Administrativo import AdministrativeService
 
 Administrativo = Blueprint('Administrativo', __name__)
 
@@ -10,7 +10,7 @@ def home_administrativo():
     if "code" in session:
         if session["type_of_user"] == 2:
             code = session["code"]
-            administrative = Administrative.query.filter_by(administrative_code=code).first()
+            administrative = AdministrativeService().get_administrative(code)
             typeids = typeIdService().get_typeIds()
             alldocuments = documentService().get_documents()
             return render_template("home_administrative.html",administrative=administrative,typeids=typeids, documents=alldocuments)

@@ -10,10 +10,14 @@ class studentsService:
         pass
 
     def get_students(self):
-        return Student.query.all()
+        students = Student.query.all()
+        db.session.commit()
+        return students
 
     def get_student(self,codigo_Student):
-        return Student.query.filter_by(codigo_Student=codigo_Student).first()
+        student = Student.query.filter_by(codigo_Student=codigo_Student).first()
+        db.session.commit()
+        return student
 
     def create_student(codigo_Student, name, lastname, id_typeid, IDNumber):
         new_student = Student(codigo_Student, name, lastname, id_typeid, IDNumber)
