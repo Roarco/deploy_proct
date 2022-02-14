@@ -15,4 +15,5 @@ python-dotenv==0.19.2
 SQLAlchemy==1.4.31
 tomli==1.2.3
 typing-extensions==4.0.1
+waitress==2.0.0
 Werkzeug==2.0.2
