@@ -20,6 +20,7 @@ def login():
         IDNumber = request.form["IDNumber"]
         type_of_user = int(request.form["type_of_user"])
         session["code"] = code
+        session["type_of_user"] = type_of_user
 
         if type_of_user == 1:
             student = Student.query.filter_by(codigo_Student=code).first()
@@ -33,16 +34,7 @@ def login():
                 flash("Credenciales incorrectas")
                 return redirect(url_for("auths.login"))
             else:
-                documents = documentService.get_document_cod_student(
-                    student.codigo_Student
-                )
-                if documents == []:
-                    document = []
-                else:
-                    document = documents[0]
-                return render_template(
-                    "home_student.html", student=student, document=document
-                )
+                return redirect(url_for("Estudiante.home_Student"))
         elif type_of_user == 2:
             administrative = Administrative.query.filter_by(
                 administrative_code=code
