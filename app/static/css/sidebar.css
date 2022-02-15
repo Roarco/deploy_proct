@@ -115,7 +115,6 @@ header{
 }
 /* fin */
 
-
 .menu__side{
     width: 80px;
     height:100%;
@@ -143,10 +142,17 @@ header{
     display:flex;
     align-items:center;
     margin-top: 10px;
+    background-color: var(--white);
 }
 .name__page i{
     width: 20px;
     margin-right: 30px;
+}
+.name__page P {
+    color: var(--black);
+    font-size:var(--sm);
+    margin-right: 30px;
+    cursor:default;
 }
 .options__menu{
     padding:20px 30px;
