@@ -7,7 +7,7 @@ from services.Documents import documentService
 from services.TypeId import typeIdService
 from services.States import stateService
 from services.Administrativo import AdministrativeService
-import app
+import aplication
 
 
 Documents = Blueprint("documents", __name__)
@@ -27,7 +27,7 @@ def upload():
                 file = request.files["file"]
                 documents = documentService.get_document_cod_student(codigo_Student)
                 if len(documents) == 0:
-                    file.save(os.path.join(app.files, f"{codigo_Student} .pdf"))
+                    file.save(os.path.join(aplication.files, f"{codigo_Student} .pdf"))
                     documentService.create_document(
                         codigo_Student,
                         datetime_document,
@@ -42,7 +42,7 @@ def upload():
                     document = documents[0]
                     return render_template("home_student.html",student=student,document=document)
                 elif len(documents) > 0 and documents[0].id_state == 2:
-                    file.save(os.path.join(app.files, f"{codigo_Student} .pdf"))
+                    file.save(os.path.join(aplication.files, f"{codigo_Student} .pdf"))
                     documentService.create_document(
                         codigo_Student,
                         datetime_document,
@@ -75,7 +75,7 @@ def upload():
 def preview(id):
     if "code" in session:
         if session["type_of_user"] == 2:
-            ruta = os.path.join(app.files, f"{id} .pdf")
+            ruta = os.path.join(aplication.files, f"{id} .pdf")
             webbrowser.open(ruta)
             return redirect(url_for("Administrativo.home_administrativo"))
         else:

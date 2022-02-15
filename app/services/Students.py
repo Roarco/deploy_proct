@@ -1,5 +1,5 @@
 import os
-import app
+import aplication
 from models.models import Student
 from services.Documents import documentService
 from utils.db import db
@@ -38,7 +38,7 @@ class studentsService:
         document_student = documentService.get_document_cod_student(codigo_Student)
         if len(document_student) > 0:
             documentService.delete_document(codigo_Student)
-            os.remove(os.path.join(app.files, f"{codigo_Student} .pdf"))
+            os.remove(os.path.join(aplication.files, f"{codigo_Student} .pdf"))
 
         student = Student.query.filter_by(codigo_Student=codigo_Student).first()
         db.session.delete(student)
