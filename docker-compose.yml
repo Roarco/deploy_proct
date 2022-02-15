@@ -1,24 +1,44 @@
 
 services:
 
-  mysql:
-      image: mysql:latest
-      container_name: mysql
-      environment:
-        - MYSQL_DATABASE=SGM_UDC
-        - MYSQL_ROOT_USER=root
-        - MYSQL_ROOT_PASSWORD=1104017400
-        - MYSQL_PORT=3306
-      ports:
-        - "3306:3306"
-      volumes:
-        - "~/mysql_data:/var/lib/mysql"
+  # mysql:
+  #     image: mysql:latest
+  #     container_name: mysql
+  #     environment:
+  #       - MYSQL_DATABASE=SGM_UDC
+  #       - MYSQL_ROOT_USER=root
+  #       - MYSQL_ROOT_PASSWORD=1104017400
+  #       - MYSQL_PORT=3306
+  #     ports:
+  #       - "3306:3306"
+  #     volumes:
+  #       - "~/mysql_data:/var/lib/mysql"
 
-  phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      container_name: phpmyadmin
+  # phpmyadmin:
+  #     image: phpmyadmin/phpmyadmin
+  #     container_name: phpmyadmin
+  #     environment:
+  #       - MYSQL_ROOT_PASSWORD=1104017400
+  #       - PMA_HOST=mysql
+  #     ports:
+  #       - "8082:80"
+
+  postgres:
+      image: postgres:latest
+      container_name: postgresql
       environment:
-        - MYSQL_ROOT_PASSWORD=1104017400
-        - PMA_HOST=mysql
+        - POSTGRES_USER=roberth
+        - POSTGRES_PASSWORD=1104017400
+        - POSTGRES_DB=SGM_UDC
       ports:
-        - "8082:80"
+        - "5432:5432"
+      volumes:
+        - "~/postgres_data:/var/lib/postgresql/data"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@mail.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - 5050:80
