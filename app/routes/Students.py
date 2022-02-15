@@ -1,6 +1,5 @@
 
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from models.models import Student
 from services.Students import studentsService
 from services.TypeId import typeIdService
 from services.Documents import documentService
