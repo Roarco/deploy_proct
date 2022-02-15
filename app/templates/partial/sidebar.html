@@ -19,13 +19,13 @@
         <p>Bienvenido {{administrative.name}} {{administrative.lastname}}</p>
     </div>
     <div class="options__menu">
-        <a href="#" class="selected">
+        <a href="{{url_for('Administrativo.home_administrativo')}}" class="selected">
             <div class="option">
                 <i class="fa fa-home" title="Inicio"></i>
                 <h4>Inicio</h4>
             </div>
         </a>
-        <a href="#">
+        <a href="{{url_for('Estudiante.crud_Student')}}">
             <div class="option">
                 <i class="fa-solid fa-users" title="Estudiantes"></i>
                 <h4>Estudiantes</h4>

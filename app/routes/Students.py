@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from services.Students import studentsService
 from services.TypeId import typeIdService
 from services.Documents import documentService
+from services.Administrativo import AdministrativeService
 
 Estudiante = Blueprint("Estudiante", __name__)
 
@@ -32,9 +33,11 @@ def home_Student():
 def crud_Student():
     if "code" in session:
         if session["type_of_user"] == 2:
+            code = session["code"]
+            administrative = AdministrativeService().get_administrative(code)
             typeids = typeIdService().get_typeIds()
             students = studentsService().get_students()
-            return render_template("crud_student.html", typeids=typeids, students=students)
+            return render_template("crud_student.html", typeids=typeids, students=students,administrative=administrative)
         else:
             return redirect(url_for("auths.index"))
     else:
