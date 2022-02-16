@@ -69,6 +69,11 @@ body {
     padding:15px;
     text-align:center;
     font-size:var(--sm);
+    max-width: 150px;
+    word-wrap: break-word;
+}
+.obs__esp{
+    max-width: 220px;
 }
 .estado-documento table thead ,caption{
     background-color:var(--textDark);

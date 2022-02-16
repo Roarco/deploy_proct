@@ -145,7 +145,7 @@ img{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 800px;
+    max-width: 1024px;
 }
 
 /* Estilos de tabla */
@@ -159,8 +159,8 @@ img{
     padding:20px;
     text-align: center;
     font-size:var(--md);
-    max-width: 160px;
-    white-space: normal;
+    max-width: 204.8px;
+    word-wrap: break-word;
 }
 .estado-documento table thead, caption{
     background-color:var(--textDark);

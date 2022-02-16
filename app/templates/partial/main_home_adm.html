@@ -31,9 +31,9 @@
                 {% if document.id_state %}
                 <td id="tdState">{{document.State.description}}</td>
                 {% endif %}
-                <td>{{document.student_observation}}</td>
+                <td class="obs__esp">{{document.student_observation}}</td>
                 {% if document.administrative_observation != None %}
-                <td>{{document.administrative_observation}}</td>
+                <td class="obs__esp">{{document.administrative_observation}}</td>
                 {% else %}
                 <td></td>
                 {% endif %}
