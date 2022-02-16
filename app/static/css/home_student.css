@@ -127,7 +127,6 @@ img{
 }
 .instructions p{
     margin: 10px 0 20px 0;
-
 }
 .instructions div {
     display: flex;
@@ -154,11 +153,14 @@ img{
     background-color:var(--textLigth);
     border-collapse: collapse;
     box-shadow:0 1rem 1rem rgba(0, 0, 0, 0.2) ;
+    table-layout:fixed;
 }
 .estado-documento th,td{
     padding:20px;
     text-align: center;
     font-size:var(--md);
+    max-width: 160px;
+    white-space: normal;
 }
 .estado-documento table thead, caption{
     background-color:var(--textDark);

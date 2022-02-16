@@ -95,10 +95,9 @@ th i{
 .estado-documento tr:nth-child(even) .pdf-visualize {
     content: url('../icons/view-white.png');
 }
-.form-group textarea {
+.form-group input .form-control{
     height: 80px;
     width: 100%;
-    resize: none;
 }
 .img-edit{
     width: 20px;
@@ -147,7 +146,6 @@ label {
 .id_number{
     margin-bottom: 20px;
 }
-
 .form-control {
     display: block;
     width: 294px;
