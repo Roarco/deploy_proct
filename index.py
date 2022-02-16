@@ -13,9 +13,8 @@ files = index.config['UPLOAD_FOLDER'] = './Documents'
 
 #settings
 index.secret_key = 'mysecretkey'
-index.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-# index.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://roignunqhvcqsm:ca8d1ec2b6ab18bf3e9cf1de52bb9e956a8aef7f1d7d0726e6f7a44a66cc9aad@ec2-3-219-204-29.compute-1.amazonaws.com:5432/d2ls4c3bb1ipt1'
-
+# index.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+index.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mftfkdpetpjckm:4aa7070a1b03863fa6019ad0ceed99aa892f6e2747314dc46400acf419218ee5@ec2-52-45-83-163.compute-1.amazonaws.com:5432/dfh6e8prkc1jb2'
 index.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 SQLAlchemy(index)
 
