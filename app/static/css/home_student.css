@@ -162,6 +162,9 @@ img{
     max-width: 204.8px;
     word-wrap: break-word;
 }
+.obs__esp{
+    max-width: 220px;
+}
 .estado-documento table thead, caption{
     background-color:var(--textDark);
     border-bottom: solid 5px var(--colorPrimary);

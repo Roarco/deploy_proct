@@ -5,52 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/crud_students.css">
+    <link rel="stylesheet" href="../static/css/sidebar.css">
     <title>Actualizar Estudiante</title>
 </head>
-<body>
-<div class="container crud-table" ng-app="myApp" ng-controller="namesCtrl">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Codigo Estudiantil</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Tipo de identificacion</th>
-                <th>Numero de identificacion</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            <tr>
-                <td>{{student.codigo_Student}}</td>
-                <td>{{student.name}}</td>
-                <td>{{student.lastname}}</td>
-                <td>{{student.TypeId.description}}</td>
-                <td>{{student.IDNumber}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="crude-form__wrapper" id="container" style="display:block">
-        <h3 id="ed" style="display:block">Editar Estudiante</h3>
-        <form action="/update_student/{{student.codigo_Student}}" autocomplete="off" method="POST" id="form" style="display:block">
-            <div class="form-group"><label for="codigo_Student">Codigo Estudiantil</label><input class="form-control" id="codigo_Student" type="number" name="codigo_Student" required="required" value="{{student.codigo_Student}}" disabled />
-            </div>
-            <div class="form-group"><label for="name">Nombre</label><input class="form-control" id="name" type="text" name="name" required="required" value="{{student.name}}" />
-            </div>
-            <div class="form-group"><label for="lastname">Apellido</label><input class="form-control" id="lastname" type="text" name="lastname" required="required" value="{{student.lastname}}" />
-            </div>
-            <div class="form-group">
-                <label for="id_typeid">Tipo de identificacion</label>
-                <select name="id_typeid" class="form-control">
-                    {% for type in typeids %}
-                    <option value="{{type.id}}">{{type.description}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group"><label for="IDNumber">Numero de identificacion</label><input class="form-control id_number" id="IDNumber" type="number" name="IDNumber" required="required" value="{{student.IDNumber}}" />
-            <button class="btn btn-primary">Editar</button>
-            <button type="button" class="btn btn-primary" onclick="delet()"> Cancel</button>
-        </form>
+<body id="body">
+    {% include './partial/sidebar.html' %}
+    <div class="container crud-table" ng-app="myApp" ng-controller="namesCtrl">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Codigo Estudiantil</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo de identificacion</th>
+                    <th>Numero de identificacion</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr>
+                    <td>{{student.codigo_Student}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.lastname}}</td>
+                    <td>{{student.TypeId.description}}</td>
+                    <td>{{student.IDNumber}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="crude-form__wrapper" id="container" style="display:block">
+            <h3 id="ed" style="display:block">Editar Estudiante</h3>
+            <form action="/update_student/{{student.codigo_Student}}" autocomplete="off" method="POST" id="form" style="display:block">
+                <div class="form-group"><label for="codigo_Student">Codigo Estudiantil</label><input class="form-control" id="codigo_Student" type="number" name="codigo_Student" required="required" value="{{student.codigo_Student}}" disabled />
+                </div>
+                <div class="form-group"><label for="name">Nombre</label><input class="form-control" id="name" type="text" name="name" required="required" value="{{student.name}}" />
+                </div>
+                <div class="form-group"><label for="lastname">Apellido</label><input class="form-control" id="lastname" type="text" name="lastname" required="required" value="{{student.lastname}}" />
+                </div>
+                <div class="form-group">
+                    <label for="id_typeid">Tipo de identificacion</label>
+                    <select name="id_typeid" class="form-control">
+                        {% for type in typeids %}
+                        <option value="{{type.id}}">{{type.description}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group"><label for="IDNumber">Numero de identificacion</label><input class="form-control id_number" id="IDNumber" type="number" name="IDNumber" required="required" value="{{student.IDNumber}}" />
+                <button class="btn btn-primary">Editar</button>
+                <button type="button" class="btn btn-primary" onclick="delet()"> Cancel</button>
+            </form>
+        </div>
     </div>
 <script src="../static/javascript/update_student.js"></script>
+<script src="https://kit.fontawesome.com/79f542cb27.js" crossorigin="anonymous"></script>
+<script src="../static/javascript/sidebar.js"></script>
 </body>
 </html>

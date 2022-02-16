@@ -15,7 +15,7 @@ body {
     padding: 24px 0 0 0;
 }
 .container {
-   margin: 80px auto 0 auto;
+    margin: 80px auto 0 auto;
 }
 * {
     box-sizing: border-box;
@@ -59,7 +59,6 @@ body {
     border-radius: 4px;
     color: white;
 }
-
 .btn-primary {
     background-color: #337ab7;
     border-color: #2e6da4;
@@ -73,8 +72,6 @@ a {
     background-color: #d9534f;
     border-color: #d43f3a;
 }
-
-
 .pull-right {
     float: right!important;
     display: flex;
@@ -152,6 +149,10 @@ label {
 }
 .form-inline .form-control {
     margin-top: 11px;
+}
+.crude-form__wrapper{
+    background-color:#fff;
+    
 }
 @media (min-width: 768px){
     .container {
