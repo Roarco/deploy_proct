@@ -5,7 +5,7 @@ from routes.Administrativo import Administrativo
 from routes.auth import auths
 from routes.Documents import Documents
 from flask_sqlalchemy import SQLAlchemy
-from utils.config import DATABASE_URL
+# from utils.config import DATABASE_URL
 
 index = Flask(__name__)
 files = index.config['UPLOAD_FOLDER'] = './Documents'
