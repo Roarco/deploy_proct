@@ -63,9 +63,7 @@ def new_Student():
                 studentsService.create_student(
                     codigo_Student, name, lastname, id_typeid, IDNumber
                 )
-            typeids = typeIdService().get_typeIds()
-            students = studentsService().get_students()
-            return render_template("crud_student.html", students=students, typeids=typeids)
+            return redirect(url_for("Estudiante.crud_Student"))
         else:
             return redirect(url_for("auths.index"))
     else:
@@ -78,9 +76,11 @@ def update_Student(id):
         if session["type_of_user"] == 2:
             idviejo = id
             studennt = studentsService().get_student(idviejo)
+            code = session["code"]
+            administrative = AdministrativeService().get_administrative(code)
             if request.method == "GET":
                 typeids = typeIdService().get_typeIds()
-                return render_template("update_student.html", student=studennt, typeids=typeids)
+                return render_template("update_student.html", student=studennt, typeids=typeids,administrative=administrative)
 
             if request.method == "POST":
                 name = request.form["name"]
