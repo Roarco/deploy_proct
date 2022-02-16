@@ -28,3 +28,20 @@ for (var i = 1; i < tabla.rows.length; i++) {
     }
     }
 }
+
+//funcion para cambiar color de letra dependiendo el estado de tabla
+
+var tabla = document.getElementById("tablaDocument");
+var cellsOfRow = "";
+for (var i = 1; i < tabla.rows.length; i++) {
+    cellsOfRow = tabla.rows[i].getElementsByTagName("td");
+    if(cellsOfRow[4].innerHTML == "Rechazado"){
+        cellsOfRow[4].style.color = "#820933";
+    }
+    if(cellsOfRow[4].innerHTML == "Aceptado"){
+        cellsOfRow[4].style.color = "#315C2B";
+    }
+    if(cellsOfRow[4].innerHTML == "En revision"){
+        cellsOfRow[4].style.color = "#2196f3";
+    }
+}
