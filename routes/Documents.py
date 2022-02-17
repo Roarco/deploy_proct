@@ -7,6 +7,8 @@ from services.Documents import documentService
 from services.TypeId import typeIdService
 from services.States import stateService
 from services.Administrativo import AdministrativeService
+from werkzeug.utils import secure_filename
+
 import index
 
 Documents = Blueprint("documents", __name__)
@@ -26,7 +28,7 @@ def upload():
                 file = request.files["file"]
                 documents = documentService.get_document_cod_student(codigo_Student)
                 if len(documents) == 0:
-                    file.save(os.path.join(index.files, f"{codigo_Student} .pdf"))
+                    file.save(os.path.join(index.files,secure_filename(f"{codigo_Student} .pdf")))
                     documentService.create_document(
                         codigo_Student,
                         datetime_document,
