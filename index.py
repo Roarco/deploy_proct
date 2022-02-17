@@ -8,7 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 # from utils.config import DATABASE_URL
 
 index = Flask(__name__)
-files = index.config['UPLOAD_FOLDER'] = './Docs'
+files = index.config['UPLOAD_FOLDER'] = './Documents'
 
 
 #settings
