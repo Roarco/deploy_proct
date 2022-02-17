@@ -28,7 +28,7 @@ def upload():
                 file = request.files["file"]
                 documents = documentService.get_document_cod_student(codigo_Student)
                 if len(documents) == 0:
-                    file.save(os.path.join(index.files,secure_filename(f"{codigo_Student} .pdf")))
+                    file.save(os.path.join(index.files, f"{codigo_Student} .pdf"))
                     documentService.create_document(
                         codigo_Student,
                         datetime_document,
